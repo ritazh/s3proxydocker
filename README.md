@@ -1,5 +1,7 @@
 # Dockerize your S3Proxy Instance - Make it Run Anywhere!
 
+[S3Proxy](https://github.com/andrewgaul/s3proxy) allows applications using the S3 API to access other storage backends, e.g., local file system, Google Cloud Storage, Microsoft Azure, OpenStack Swift. Users can use this solution to test, deploy, and run S3Proxy instance in a docker container.
+
 ## Container Environment:
 * Apache Maven 3.3.9
 * Maven home: /usr/share/maven
@@ -9,7 +11,7 @@
 * jetty-9.2.z-SNAPSHOT
 
 ## Prerequisites
-- [docker][docker.io]
+- Setup [docker](https://www.docker.com/)
 - Understand fundamentals of S3Proxy: configuration and setup - [S3Proxy](https://github.com/andrewgaul/s3proxy)
 
 ## Getting Started
@@ -35,5 +37,25 @@ If you cannot get to the internet from the container, use the following:
 
 `$ docker run --dns 8.8.8.8 -t -i -p 8080:8080 s3proxy`
 
+## Verifying Output
+Sample output should be something like this:
 
+```
+I 12-08 01:35:30.616 main org.eclipse.jetty.util.log:186 |::] Logging initialized @1046ms
+I 12-08 01:35:30.642 main o.eclipse.jetty.server.Server:327 |::] jetty-9.2.z-SNAPSHOT
+I 12-08 01:35:30.665 main o.e.j.server.ServerConnector:266 |::] Started ServerConnector@7331196b{HTTP/1.1}{0.0.0.0:8080}
+I 12-08 01:35:30.666 main o.eclipse.jetty.server.Server:379 |::] Started @1097ms
+```
+
+`docker ps` output should be similar to this:
+```
+$ docker ps
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                     NAMES
+789186d1debf        s3proxy                  "/bin/sh -c './target"   5 seconds ago       Up 4 seconds        0.0.0.0:8080->8080/tcp    tender_feynman
+```
+Since we mapped port 8080 to 8080, you can navigate to [docker ip]:8080. For example: http://192.168.99.100:8080/
+
+## Acknowledgements
+
+Many thanks to @andrewgaul and @kahing for developing and maintaining S3Proxy.
 
