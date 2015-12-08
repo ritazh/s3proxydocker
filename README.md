@@ -1,4 +1,4 @@
-# Dockerize your S3Proxy instance, make it run anywhere!
+# Dockerize your S3Proxy Instance - Make it Run Anywhere!
 
 ## Container Environment:
 * Apache Maven 3.3.9
@@ -9,7 +9,7 @@
 * jetty-9.2.z-SNAPSHOT
 
 ## Prerequisites
-- [docker][]
+- [docker][docker.io]
 - Understand fundamentals of S3Proxy: configuration and setup - [S3Proxy](https://github.com/andrewgaul/s3proxy)
 
 ## Getting Started
@@ -22,7 +22,6 @@ $ docker-machine ip [docker machine name]
 
 Sample output:
 192.168.99.100
-
 ```
 - Build docker image:
 
@@ -33,7 +32,8 @@ Sample output:
 `$ docker run -t -i -p 8080:8080 s3proxy`
 
 If you cannot get to the internet from the container, use the following:
-`docker run --dns 8.8.8.8 -t -i -p 8080:8080 s3proxy`
+
+`$ docker run --dns 8.8.8.8 -t -i -p 8080:8080 s3proxy`
 
 
 
