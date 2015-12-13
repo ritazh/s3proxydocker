@@ -5,6 +5,9 @@
 ## Prerequisites
 Setup a [Dokku](http://dokku.viewdocs.io/dokku/installation/#installing-via-other-methods) environment in your cloud provider of choice. For example, you can following this [guide](http://dokku.viewdocs.io/dokku/getting-started/install/azure/) to install a Dokku instance on Microsoft Azure.
 
+## Update Your S3Proxy Dockerfile
+Similar to running S3Proxy as a container locally, you need to update your [s3proxy.conf](s3proxy.conf) file like [s3proxydokku.conf](s3proxydokku.conf) by replacing the [[dokku public ip]] value with the new dokku instance you have previously provisioned.
+
 ## Deploy S3Proxy as a Docker App
 
 - From your local dev machine, git clone this repo:

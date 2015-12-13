@@ -55,6 +55,10 @@ CONTAINER ID        IMAGE                    COMMAND                  CREATED   
 ```
 Since we mapped port 8080 to 8080, you can navigate to [docker ip]:8080. For example: http://192.168.99.100:8080/
 
+## Other Deployment Options
+# Deploy to Platforms like Dokku
+You can push S3Proxy as a docker app to various platforms. [Dokku](http://dokku.viewdocs.io/dokku/) is a Docker powered open source Platform as a Service that runs on any hardware or cloud provider.Dokku can use the S3Proxy [Dockerfile](Dockerfile) to instantiate containers to deploy and scale S3Proxy with few easy commands. Follow the [Depoy-to-Dokku](Deploy-to-Dokku.md) guide to host your own S3Proxy in Dokku.
+
 ## Acknowledgements
 
 Many thanks to @andrewgaul and @kahing for developing and maintaining S3Proxy.
