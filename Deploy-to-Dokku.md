@@ -105,11 +105,62 @@ server {
 
 ...
 ```
-To include other configurations of nginx, we can add new configurations files under `/home/dokku/myapp/nginx.conf.d/`. 
+## Increasing Client Request Maximum Size for Upload
+
+To include additional configurations of nginx, we can add new configurations files under `/home/dokku/myapp/nginx.conf.d/`. 
+
 ```
 $ sudo su
-mkdir /home/dokku/myapp/nginx.conf.d/
-echo 'client_max_body_size 50M;' > /home/dokku/myapp/nginx.conf.d/upload.conf
-chown dokku:dokku /home/dokku/myapp/nginx.conf.d/upload.conf
-nginx -s reload
+$ mkdir /home/dokku/myapp/nginx.conf.d/
+$ echo 'client_max_body_size 50M;' > /home/dokku/myapp/nginx.conf.d/upload.conf
+$ chown dokku:dokku /home/dokku/myapp/nginx.conf.d/upload.conf
+$ nginx -s reload
+```
+## Scaling Your S3Proxy App
+Increase your app web process to 2 containers.
+
+```
+$ dokku ps:scale s3proxy web=2
+-----> Scaling s3proxy:web to 2
+-----> Releasing s3proxy (dokku/s3proxy:latest)...
+-----> Deploying s3proxy (dokku/s3proxy:latest)...
+-----> DOKKU_SCALE file found
+=====> web=2
+[omit for brevity]
+-----> Waiting for 10 seconds ...
+-----> Default container check successful!
+=====> s3proxy container output:
+[omit for brevity]
+=====> end s3proxy container output
+[omit for brevity]
+-----> Waiting for 10 seconds ...
+-----> Default container check successful!
+=====> s3proxy container output:
+[omit for brevity]
+=====> end s3proxy container output
+-----> Running post-deploy
+-----> Configuring s3proxy.[[Dokku public ip]].xip.io...
+-----> Configuring *.s3proxy.[[Dokku public ip]].xip.io...
+-----> Creating http nginx.conf
+-----> Running nginx-pre-reload
+       Reloading nginx
+-----> Setting config vars
+       DOKKU_APP_RESTORE: 1
+-----> Shutting down old containers in 60 seconds
+=====> 3322dad2a114953a9bd99c03b90f3e680f571c5c1bbd5e43a5255de25e95ae77
+=====> Application deployed:
+       http://s3proxy.[[Dokku public ip]].xip.io
+       http://*.s3proxy.[[Dokku public ip]].xip.io
+```
+
+When looking at running processes for S3Proxy app, notice now we have 2 containers running:
+
+```
+$ dokku ps s3proxy
+-----> running processes in container: 673aa4ae40305a3ddae8ac73239106337cd869b81a60781da9684ce702a41b26
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+[omit for brevity]
+-----> running processes in container: 51471577d1e6081b18c3b16e1d93944656455843d34c422c68d64fe2dbde306d
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+[omit for brevity]
 ```
