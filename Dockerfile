@@ -3,7 +3,7 @@ FROM maven:3
 
 WORKDIR /opt
 
-RUN git clone -b fordocker https://github.com/ritazh/s3proxy.git
+RUN git clone -b master https://github.com/ritazh/s3proxy.git
 
 WORKDIR /opt/s3proxy
 RUN mvn package
