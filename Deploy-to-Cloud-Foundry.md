@@ -1,6 +1,6 @@
 # Deploy S3Proxydocker to Cloud Foundry Diego
 
-[Cloud Foundry](https://www.cloudfoundry.org/)
+[Cloud Foundry](https://www.cloudfoundry.org/) is an open source PaaS that enables developers to deploy and scale applications in minutes, regardless of the cloud provider. Cloud Foundry with Diego can pull the S3Proxy Docker image from a Docker Registry then run and scale it as containers.
 
 ## Prerequisites
 Setup a [Cloud Foundry](https://www.cloudfoundry.org/) environment in your [cloud provider of choice](https://docs.cloudfoundry.org/deploying/index.html). For example, you can follow this [guide](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md) to install a Cloud Foundry cluster on Microsoft Azure. Make sure you have [installed and enabled Diego](https://github.com/cloudfoundry-incubator/diego-release#deploying-diego-to-bosh-lite) in your Cloud Foundry instance. For example, you can follow this [guide](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/push-your-first-net-application-to-cloud-foundry-on-azure.md#deploy-diego-on-azure) for deploying Diego on Azure.
@@ -27,7 +27,7 @@ $ make build
 ```
 - Push S3Proxy Docker image to a Docker Registry
 ```
-$ docker push ritazh/s3proxy
+$ docker push [DOCKERHUB-USERNAME]/s3proxy
 
 # For this example, we are using Docker hub. You can also do this against any public or private Docker Registry instance. Make sure your Cloud Foundry cluster has access to push/pull images from this Docker Registry.
 ```
@@ -37,7 +37,7 @@ The steps below assume you have already logged into a CF instance with `cf login
 - Let's push the S3Proxy image to Cloud Foundry, but we do not want to start it yet.
 
 ```
-$ cf push s3proxy -o ritazh/s3proxy --no-start
+$ cf push s3proxy -o [DOCKERHUB-USERNAME]/s3proxy --no-start
 
 ```
 - Use `cf apps` to get the application URL of your app. 

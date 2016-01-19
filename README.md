@@ -58,11 +58,11 @@ Since we mapped port 8080 to 8080, you can navigate to [docker ip]:8080. For exa
 ## Other Deployment Options
 You can push S3Proxy as a docker app to various platforms.
 
-### Deploy to a Platform like Dokku
+### Deploy to Platforms like Dokku
  [Dokku](http://dokku.viewdocs.io/dokku/) is a Docker powered open source Platform as a Service that runs on any hardware or cloud provider. Dokku can use the S3Proxy [Dockerfile](Dockerfile) to instantiate containers to deploy and scale S3Proxy with few easy commands. Follow the [Depoy-to-Dokku](Deploy-to-Dokku.md) guide to host your own S3Proxy in Dokku.
 
-### Deploy to a Platform like Cloud Foundry
- [Cloud Foundry](https://www.cloudfoundry.org/) is an open source PaaS that enables developers to deploy and scale applications in minutes, regardless of the cloud provider. Cloud Foundry with Diego can pull the S3Proxy Docker image from a Docker Registry then run it as containers. Follow the [Depoy-to-Cloud-Foundry](Depoy-to-Cloud-Foundry.md) guide to host your own S3Proxy in Cloud Foundry.
+### Deploy to Platforms like Cloud Foundry
+ [Cloud Foundry](https://www.cloudfoundry.org/) is an open source PaaS that enables developers to deploy and scale applications in minutes, regardless of the cloud provider. Cloud Foundry with Diego can pull the S3Proxy Docker image from a Docker Registry then run and scale it as containers. Follow the [Depoy-to-Cloud-Foundry](Depoy-to-Cloud-Foundry.md) guide to host your own S3Proxy in Cloud Foundry.
 
 ## Acknowledgements
 
