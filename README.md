@@ -55,13 +55,27 @@ CONTAINER ID        IMAGE                    COMMAND                  CREATED   
 ```
 Since we mapped port 8080 to 8080, you can navigate to [docker ip]:8080. For example: http://192.168.99.100:8080/
 
+## Updating Hosts File
+If you are running this locally using a local ip, you will need to update your `/etc/hosts` file to add entries for the subdomains.
+For example, if the root of the site is running at `http://192.168.99.100:8080/`, then make sure you add an entry in the `/etc/hosts` file for each subdomain.
+If the container name is `democontainer`, then add a subdomain as follows in the hosts file.
+
+```
+192.168.99.100  democontainer.192.168.99.100
+```
+To verify, navigate to [CONTAINER NAME].[DOCKER MACHINE IP]:8080. For example: http://democontainer.192.168.99.100:8080/
+
+## Testing with a Sample App
+Refer to [the AWS Java sample app](https://github.com/ritazh/aws-java-sample) repo to test your S3Proxy deployment. It is a simple Java application illustrating usage of the AWS S3 SDK for Java.
+
+
 ## Other Deployment Options
 You can push S3Proxy as a docker app to various platforms.
 
-### Deploy to Platforms like Dokku
+### Deploying to Platforms like Dokku
  [Dokku](http://dokku.viewdocs.io/dokku/) is a Docker powered open source Platform as a Service that runs on any hardware or cloud provider. Dokku can use the S3Proxy [Dockerfile](Dockerfile) to instantiate containers to deploy and scale S3Proxy with few easy commands. Follow the [Depoy-to-Dokku](Deploy-to-Dokku.md) guide to host your own S3Proxy in Dokku.
 
-### Deploy to Platforms like Cloud Foundry
+### Deploying to Platforms like Cloud Foundry
  [Cloud Foundry](https://www.cloudfoundry.org/) is an open source PaaS that enables developers to deploy and scale applications in minutes, regardless of the cloud provider. Cloud Foundry with Diego can pull the S3Proxy Docker image from a Docker Registry then run and scale it as containers. Follow the [Depoy-to-Cloud-Foundry](Depoy-to-Cloud-Foundry.md) guide to host your own S3Proxy in Cloud Foundry.
 
 ## Acknowledgements
