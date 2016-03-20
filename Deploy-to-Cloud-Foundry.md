@@ -34,6 +34,13 @@ $ docker push [DOCKERHUB-USERNAME]/s3proxy
 ## Pushing S3Proxy as an App to Cloud Foundry
 The steps below assume you have already logged into a CF instance with `cf login` and `cf target`. 
 
+- To ensure you have diego enabled in your CF instance, do the following:
+
+```
+$ cf enable-feature-flag diego_docker
+
+```
+
 - Let's push the S3Proxy image to Cloud Foundry, but we do not want to start it yet.
 
 ```
