@@ -1,2 +1,2 @@
 build:
-	docker build -t ritazh/s3proxy .
+	docker build -t s3proxy .
