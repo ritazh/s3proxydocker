@@ -15,7 +15,7 @@
 - Understand fundamentals of S3Proxy: configuration and setup - [S3Proxy](https://github.com/andrewgaul/s3proxy)
 
 ## Getting Started
-- Update [s3proxy.conf](/s3proxy.conf) with your own storage provider backend. I have provided an example of s3proxy.conf for Azure storage. For more options against other storage providers, checkout [S3Proxy's wiki](https://github.com/andrewgaul/s3proxy/wiki/Provider-examples)
+- Update [s3proxy.conf](/s3proxy.conf) with your own storage provider backend. I have provided an example of s3proxy.conf for Azure storage. For more options against other storage providers, checkout [S3Proxy's wiki](https://github.com/andrewgaul/s3proxy/wiki/Storage-backend-examples)
 - If you have a need for `s3proxy.virtual-host`, update [s3proxy.conf](/s3proxy.conf) with your own docker ip. 
 
 To find the docker ip:
